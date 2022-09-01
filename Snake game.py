@@ -132,8 +132,8 @@ def drawGrid(w, rows, surface):
         x = x + sizeBtwn
         y = y + sizeBtwn
 
-        pygame.draw.line(surface, (255, 255, 255), (x, 0), (x, w))
-        pygame.draw.line(surface, (255, 255, 255), (0, y), (w, y))
+        pygame.draw.line(surface, (0, 0, 0), (x, 0), (x, w))
+        pygame.draw.line(surface, (0, 0, 0), (0, y), (w, y))
 
 def redrawWindow(surface):
     global rows, width, s, snack
@@ -172,7 +172,7 @@ def main():
     rows = 20
     win = pygame.display.set_mode((width, width))
     s = snake((0, 255, 0), (10, 10))
-    snack = cube(randomSnack(rows, s), color=(0, 0, 255))
+    snack = cube(randomSnack(rows, s), color=(255, 0, 0))
     flag = True
 
     clock = pygame.time.Clock()
@@ -183,7 +183,7 @@ def main():
         s.move()
         if s.body[0].pos == snack.pos:
             s.addCube()
-            snack = cube(randomSnack(rows, s), color=(0, 0, 255))
+            snack = cube(randomSnack(rows, s), color=(255, 0, 0))
 
         for x in range(len(s.body)):
             if s.body[x].pos in list(map(lambda z:z.pos, s.body[x+1:])):
